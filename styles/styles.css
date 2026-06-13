@@ -1,0 +1,201 @@
+/* ============================================================
+   FLOW BY PEREGRINE — design foundation
+   Two directions, switched via [data-theme] on :root
+   A) peregrine  — premium & editorial (ink, brass, ivory, serif display)
+   B) flow       — clean & utilitarian (emerald, slate, crisp grotesque)
+   ============================================================ */
+
+/* ---- Direction A: Peregrine (default) ---- */
+:root,
+:root[data-theme="peregrine"] {
+  --font-display: "Newsreader", Georgia, serif;
+  --font-body: "Hanken Grotesk", system-ui, sans-serif;
+  --display-weight: 400;
+  --display-style: normal;
+  --display-tracking: -0.01em;
+
+  --bg: #F2ECE0;
+  --surface: #FBF8F1;
+  --surface-2: #F4EEE2;
+  --surface-inset: #EDE5D5;
+  --border: #E0D6C4;
+  --border-strong: #D2C5AD;
+
+  --text: #1B1E2A;
+  --text-muted: #5C5A54;
+  --text-faint: #918B7E;
+
+  --accent: #9A7634;
+  --accent-hover: #846227;
+  --accent-soft: #EFE3CB;
+  --accent-contrast: #FBF8F1;
+  --accent-ring: rgba(154, 118, 52, 0.28);
+
+  /* navigation rail */
+  --nav-bg: #15182579;
+  --nav-bg-solid: #141826;
+  --nav-fg: #EDE7D8;
+  --nav-fg-muted: #9A9685;
+  --nav-active-bg: #232743;
+  --nav-active-fg: #F3E9CF;
+  --nav-accent: #C79B4E;
+  --nav-border: #262A3D;
+
+  --radius: 10px;
+  --radius-lg: 16px;
+  --radius-sm: 7px;
+  --shadow-sm: 0 1px 2px rgba(27, 30, 42, 0.05), 0 1px 3px rgba(27, 30, 42, 0.04);
+  --shadow-md: 0 4px 14px rgba(27, 30, 42, 0.08), 0 1px 3px rgba(27, 30, 42, 0.05);
+  --shadow-lg: 0 24px 60px rgba(27, 30, 42, 0.16);
+}
+
+/* ---- Direction B: Flow ---- */
+:root[data-theme="flow"] {
+  --font-display: "Space Grotesk", system-ui, sans-serif;
+  --font-body: "Hanken Grotesk", system-ui, sans-serif;
+  --display-weight: 600;
+  --display-style: normal;
+  --display-tracking: -0.02em;
+
+  --bg: #EEF1F0;
+  --surface: #FFFFFF;
+  --surface-2: #F6F8F7;
+  --surface-inset: #EEF2F1;
+  --border: #E2E8E6;
+  --border-strong: #CFD8D5;
+
+  --text: #0E1B17;
+  --text-muted: #56635E;
+  --text-faint: #8A958F;
+
+  --accent: #0E8A63;
+  --accent-hover: #0B7252;
+  --accent-soft: #D8F0E5;
+  --accent-contrast: #FFFFFF;
+  --accent-ring: rgba(14, 138, 99, 0.25);
+
+  --nav-bg: #FFFFFF;
+  --nav-bg-solid: #FFFFFF;
+  --nav-fg: #243029;
+  --nav-fg-muted: #8A958F;
+  --nav-active-bg: #E4F4EC;
+  --nav-active-fg: #0B7252;
+  --nav-accent: #0E8A63;
+  --nav-border: #E2E8E6;
+
+  --radius: 12px;
+  --radius-lg: 16px;
+  --radius-sm: 8px;
+  --shadow-sm: 0 1px 2px rgba(14, 27, 23, 0.04), 0 1px 2px rgba(14, 27, 23, 0.03);
+  --shadow-md: 0 4px 16px rgba(14, 27, 23, 0.07), 0 1px 3px rgba(14, 27, 23, 0.04);
+  --shadow-lg: 0 24px 60px rgba(14, 27, 23, 0.13);
+}
+
+/* ---- Status palette (shared, tuned per theme below) ---- */
+:root {
+  --st-invited-fg:    #8A6A1E;
+  --st-invited-bg:    #F4E9CF;
+  --st-registered-fg: #14774E;
+  --st-registered-bg: #D6EFDF;
+  --st-declined-fg:   #A23B3B;
+  --st-declined-bg:   #F4DAD8;
+  --st-checkedin-fg:  #2C5BA8;
+  --st-checkedin-bg:  #D9E5F7;
+  --st-noresponse-fg: #6B6F77;
+  --st-noresponse-bg: #E7E7E6;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #1c2030;
+  font-family: var(--font-body);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+#root { min-height: 100vh; }
+
+h1, h2, h3, h4 { margin: 0; }
+
+.display {
+  font-family: var(--font-display);
+  font-weight: var(--display-weight);
+  font-style: var(--display-style);
+  letter-spacing: var(--display-tracking);
+}
+
+button { font-family: inherit; cursor: pointer; }
+input, select, textarea { font-family: inherit; }
+
+::selection { background: var(--accent-ring); }
+
+/* scrollbars */
+.scroll::-webkit-scrollbar { width: 10px; height: 10px; }
+.scroll::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 99px; border: 3px solid transparent; background-clip: padding-box; }
+.scroll::-webkit-scrollbar-track { background: transparent; }
+
+/* ---- shared atoms ---- */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  font-weight: 600; font-size: 14px;
+  padding: 10px 16px;
+  transition: background .15s, color .15s, border-color .15s, box-shadow .15s, transform .08s;
+  white-space: nowrap;
+}
+.btn:active { transform: translateY(0.5px); }
+.btn-primary { background: var(--accent); color: var(--accent-contrast); }
+.btn-primary:hover { background: var(--accent-hover); }
+.btn-ghost { background: transparent; color: var(--text-muted); border-color: var(--border-strong); }
+.btn-ghost:hover { background: var(--surface-2); color: var(--text); }
+.btn-soft { background: var(--accent-soft); color: var(--accent); }
+.btn-soft:hover { filter: brightness(0.97); }
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 12px; font-weight: 600;
+  padding: 4px 10px; border-radius: 99px;
+  letter-spacing: 0.01em;
+}
+
+.input {
+  width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  padding: 11px 13px;
+  font-size: 14px; color: var(--text);
+  transition: border-color .15s, box-shadow .15s;
+  outline: none;
+}
+.input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-ring); }
+.input::placeholder { color: var(--text-faint); }
+
+label.field { display: block; }
+label.field > span {
+  display: block; font-size: 12.5px; font-weight: 600;
+  color: var(--text-muted); margin-bottom: 6px; letter-spacing: 0.01em;
+}
+
+.eyebrow {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--text-faint);
+}
+
+/* slide entrance — transform only, so content is NEVER invisible
+   (a paused/exported/snapshotted frame still shows everything) */
+@keyframes flowIn { from { transform: translateY(10px); } to { transform: none; } }
+.animate-in { animation: flowIn .5s cubic-bezier(.2,.7,.3,1) both; }
+@media (prefers-reduced-motion: reduce) { .animate-in { animation: none; } }
