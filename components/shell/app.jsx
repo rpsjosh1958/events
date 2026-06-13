@@ -2,7 +2,7 @@
    FLOW — App shell, navigation, theme + tweaks
    ============================================================ */
 const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
-  "direction": "peregrine",
+  "direction": "flow",
   "accent": "theme",
   "scale": 100,
   "navGlass": true
